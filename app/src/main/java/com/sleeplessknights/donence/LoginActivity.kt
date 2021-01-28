@@ -13,13 +13,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.sleeplessknights.donence.model.User
 import com.sleeplessknights.donence.rest.LoginRepository
-import com.sleeplessknights.donence.rest.UserApiService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.DisposableHandle
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
@@ -31,11 +27,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        var button: SignInButton = findViewById(R.id.sign_in_button)
+        val button: SignInButton = findViewById(R.id.sign_in_button)
         button.setOnClickListener{
             onClick(button)
         }
-        var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .requestProfile()
 
@@ -44,11 +40,14 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        var account = GoogleSignIn.getLastSignedInAccount(this)
+        val account = GoogleSignIn.getLastSignedInAccount(this)
 
-        var mainIntent = Intent(this, MainActivity::class.java)
+        val mainIntent = Intent(this, MainActivity::class.java)
         if (account != null) {
             if (!account.isExpired) {
+
+                login(account)
+
                 mainIntent.putExtra("loggedIn", true)
                 mainIntent.putExtra("userId", account.id)
                 mainIntent.putExtra("userEmail", account.email)
@@ -72,24 +71,27 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == this.RC_SIGN_IN) {
-            var task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
     }
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
-            var account: GoogleSignInAccount? = completedTask.getResult(ApiException::class.java)
+            val account: GoogleSignInAccount? = completedTask.getResult(ApiException::class.java)
             checkExistence(account?.email)
             /* TODO: login success, switch to main activity and do not turn back until your login is expired
              *       if this is the first time, please give google the new user's address through maps api which will be in address activity and will play a key role in our application which is why we feed google with user's precious information probably without her/him even knowing it
              *      -Dz */
+
+            login(account)
+
             Toast.makeText(applicationContext, "Welcome, " + account?.displayName, Toast.LENGTH_LONG)
                     .also(Toast::show)
 
             /* this intent sends the user data to main activity.
              * try CTRL+SHIFT+F'ing for INTENT_LOGIN_MAIN */
-            var mainIntent = Intent(this, MainActivity::class.java)
+            val mainIntent = Intent(this, MainActivity::class.java)
             startActivity(mainIntent)
         } catch (e: ApiException) {
             Log.w(LOG_TAG, "code: " + e.statusCode)
@@ -116,7 +118,9 @@ class LoginActivity : AppCompatActivity() {
     //         See https://developer.android.com/kotlin/coroutines for more information.
     //        -Dz
     private fun login(account: GoogleSignInAccount?) {
-        //this.loginRepository.userAuth(account)
+        GlobalScope.launch {
+            loginRepository.userAuth(account)
+        }
     }
 }
 
