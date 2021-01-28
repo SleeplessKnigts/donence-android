@@ -29,8 +29,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        //TODO: make login activity default
+        /* TODO: i don't even know what is to be done here but surely there is or will be something.
+         *       so... there is that.
+         *      -Dz */
 
+        /* this intent kindly accepts the user data from login activity.
+         * try CTRL+SHIFT+F'ing for INTENT_LOGIN_MAIN */
         loggedIn = intent.getBooleanExtra("loggedIn", false)
         if(!loggedIn) {
             val loginIntent = Intent(this, LoginActivity::class.java)
@@ -38,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /* TODO: remove these toys */
     fun placeHolderOnClick(view: View) {
         val toastText = "Clicked the button!"
         val duration = Toast.LENGTH_LONG
@@ -45,3 +50,9 @@ class MainActivity : AppCompatActivity() {
         toast.show()
     }
 }
+
+// DISCLAIMER (FOR NO REASON AT ALL):
+// Function, class and package names, types, locations etc. are all subject to change.
+// The goal is to provide basic functionality and understand how things work around here just for now.
+// Happy developing, boys!
+// -Dz
