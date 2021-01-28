@@ -23,10 +23,14 @@ interface UserApiService {
     // UserApiService.create() returns a UserApiService object *touched* by Retrofit API(???)
     // -Dz
     companion object {
-        private val URL = "https://10.0.2.2:5432" /*TODO: fun fact: 10.0.2.2 refers to host loopback ip address in avd.
+        /* TODO: MAKE IT USE SSL!
+        *        Normally, Android does not allow Cleartext communication.
+        *        Since the backend server can not handle SSL handshakes yet, we have a workaround.
+        *        CTRL+SHIFT+F usesClearText to see the workaround in AndroidManifest.xml
+        *       -Dz */
+        private val URL = "http://10.0.2.2:8080" /*TODO: fun fact: 10.0.2.2 refers to host loopback ip address in avd.
                                                   *       replace with real url _when the time comes_.
-                                                  *       get from string.xml goddamit
-                                                         -Dz */
+                                                  *      -Dz */
         fun create(): UserApiService {
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
