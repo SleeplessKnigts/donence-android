@@ -14,7 +14,9 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.sleeplessknights.donence.base.viewModel
 import com.sleeplessknights.donence.databinding.ActivityLoginBinding
-import com.sleeplessknights.donence.rest.LoginRepository
+import com.sleeplessknights.donence.rest.login.LoginRepository
+import com.sleeplessknights.donence.ui.login.LoginActivityViewModel
+import com.sleeplessknights.donence.ui.login.LoginNavigator
 
 class LoginActivity : AppCompatActivity() {
 

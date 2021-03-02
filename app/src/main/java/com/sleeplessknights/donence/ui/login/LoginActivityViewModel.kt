@@ -1,4 +1,4 @@
-package com.sleeplessknights.donence
+package com.sleeplessknights.donence.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.sleeplessknights.donence.model.User
-import com.sleeplessknights.donence.rest.LoginRepository
+import com.sleeplessknights.donence.rest.login.LoginRepository
+import com.sleeplessknights.donence.ui.login.LoginNavigator
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response

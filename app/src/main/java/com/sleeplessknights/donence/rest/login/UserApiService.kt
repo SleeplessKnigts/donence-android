@@ -1,19 +1,16 @@
-package com.sleeplessknights.donence.rest
+package com.sleeplessknights.donence.rest.login
 
 import com.sleeplessknights.donence.model.User
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.POST
-import retrofit2.http.Query
-import java.util.*
 import retrofit2.converter.gson.GsonConverterFactory
-import com.sleeplessknights.donence.rest.UserApiService
 import retrofit2.http.Body
 
 interface UserApiService {
 
     @POST("login")
-    fun authenticateUser(@Body request: deneme): Call<User> // fun definition of authenticateUser ends here
+    fun authenticateUser(@Body request: User): Call<User> // fun definition of authenticateUser ends here
 
 
     // As far as I understand, this object is the girlfriend of our bro interface UserApiService
