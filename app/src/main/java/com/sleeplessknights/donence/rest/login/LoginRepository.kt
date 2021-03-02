@@ -1,4 +1,4 @@
-package com.sleeplessknights.donence.rest
+package com.sleeplessknights.donence.rest.login
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.sleeplessknights.donence.model.User
@@ -20,7 +20,7 @@ class LoginRepository() {
         return withContext(Dispatchers.IO) {
             /* backend struggle starts here */
             return@withContext userApiService.authenticateUser(
-                deneme(account?.email.toString(), account?.displayName.toString(), "google", "NA"))
+                User(account?.email.toString(), account?.displayName.toString(), "google", "NA"))
         }
     }
 }
