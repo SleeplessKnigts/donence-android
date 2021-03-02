@@ -12,7 +12,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
-    private var loggedIn: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,17 +26,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    override fun onStart() {
-        super.onStart()
-        //TODO: make login activity default
-
-        loggedIn = intent.getBooleanExtra("loggedIn", false)
-        if(!loggedIn) {
-            val loginIntent = Intent(this, LoginActivity::class.java)
-            startActivity(loginIntent)
-        }
-    }
-
+    /* TODO: remove these toys */
     fun placeHolderOnClick(view: View) {
         val toastText = "Clicked the button!"
         val duration = Toast.LENGTH_LONG
@@ -45,3 +34,9 @@ class MainActivity : AppCompatActivity() {
         toast.show()
     }
 }
+
+// DISCLAIMER (FOR NO REASON AT ALL):
+// Function, class and package names, types, locations etc. are all subject to change.
+// The goal is to provide basic functionality and understand how things work around here just for now.
+// Happy developing, boys!
+// -Dz
