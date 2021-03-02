@@ -8,14 +8,12 @@ import retrofit2.http.Query
 import java.util.*
 import retrofit2.converter.gson.GsonConverterFactory
 import com.sleeplessknights.donence.rest.UserApiService
+import retrofit2.http.Body
 
 interface UserApiService {
 
     @POST("login")
-    fun authenticateUser(@Query("email") email: String,
-                         @Query("name") name: String,
-                         @Query("authProvider") authProvider: String,
-                         @Query("imageUrl") imageUrl: String): Call<User> // fun definition of authenticateUser ends here
+    fun authenticateUser(@Body request: deneme): Call<User> // fun definition of authenticateUser ends here
 
 
     // As far as I understand, this object is the girlfriend of our bro interface UserApiService
@@ -28,7 +26,7 @@ interface UserApiService {
         *        Since the backend server can not handle SSL handshakes yet, we have a workaround.
         *        CTRL+SHIFT+F usesClearText to see the workaround in AndroidManifest.xml
         *       -Dz */
-        private val URL = "http://10.0.2.2:8080/api/auth/login/" /*TODO: fun fact: 10.0.2.2 refers to host loopback ip address in avd.
+        private val URL = "http://10.0.2.2:8080/api/auth/" /*TODO: fun fact: 10.0.2.2 refers to host loopback ip address in avd.
                                                   *       replace with real url _when the time comes_.
                                                   *      -Dz */
         fun create(): UserApiService {

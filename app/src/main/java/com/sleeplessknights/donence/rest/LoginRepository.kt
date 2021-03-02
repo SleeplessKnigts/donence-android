@@ -16,17 +16,11 @@ class LoginRepository() {
     // BEWARE: This function uses coroutines *to connect to the backend userAuthentication endpoint*
     //         See https://developer.android.com/kotlin/coroutines for more information.
     //        -Dz
-    suspend fun userAuth(account: GoogleSignInAccount?) {
+    suspend fun userAuth(account: GoogleSignInAccount?): Call<User> {
         return withContext(Dispatchers.IO) {
             /* backend struggle starts here */
-            var call: Call<User> = userApiService.authenticateUser(
-                account?.email.toString(),
-                account?.displayName.toString(),
-                "google",
-                "NA"
-            ).also {
-                val execute = it.execute()
-            }
+            return@withContext userApiService.authenticateUser(
+                deneme(account?.email.toString(), account?.displayName.toString(), "google", "NA"))
         }
     }
 }

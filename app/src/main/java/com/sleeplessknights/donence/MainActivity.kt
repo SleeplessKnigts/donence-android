@@ -12,7 +12,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
-    private var loggedIn: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,21 +24,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_dropoff))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        /* TODO: i don't even know what is to be done here but surely there is or will be something.
-         *       so... there is that.
-         *      -Dz */
-
-        /* this intent kindly accepts the user data from login activity.
-         * try CTRL+SHIFT+F'ing for INTENT_LOGIN_MAIN */
-        loggedIn = intent.getBooleanExtra("loggedIn", false)
-        if(!loggedIn) {
-            val loginIntent = Intent(this, LoginActivity::class.java)
-            startActivity(loginIntent)
-        }
     }
 
     /* TODO: remove these toys */

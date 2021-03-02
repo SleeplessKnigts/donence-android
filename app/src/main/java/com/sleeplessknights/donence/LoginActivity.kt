@@ -3,34 +3,34 @@ package com.sleeplessknights.donence
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.sleeplessknights.donence.base.viewModel
+import com.sleeplessknights.donence.databinding.ActivityLoginBinding
 import com.sleeplessknights.donence.rest.LoginRepository
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var binding: ActivityLoginBinding
+    private val viewModel by viewModel { initViewModel() }
+
     private val RC_SIGN_IN = 9001 /* TODO: learn the purpose of this. seems like extremely random.*/
     private val LOG_TAG = "SignIn"
-    private val loginRepository: LoginRepository = LoginRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        val button: SignInButton = findViewById(R.id.sign_in_button)
-        button.setOnClickListener{
-            onClick(button)
-        }
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding.vm = viewModel
+        setContentView(binding.root)
+        observe()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .requestProfile()
@@ -38,28 +38,21 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso.build())
     }
 
+    private fun observe() {
+        viewModel.getIsClicked().observe(this, Observer { abc ->
+            if (abc) {
+                signIn()
+            }
+        })
+    }
+
     override fun onStart() {
         super.onStart()
         val account = GoogleSignIn.getLastSignedInAccount(this)
-
-        val mainIntent = Intent(this, MainActivity::class.java)
         if (account != null) {
             if (!account.isExpired) {
-
-                login(account)
-
-                mainIntent.putExtra("loggedIn", true)
-                mainIntent.putExtra("userId", account.id)
-                mainIntent.putExtra("userEmail", account.email)
-                mainIntent.putExtra("userDisplayName", account.displayName)
-                startActivity(mainIntent)
+                viewModel.myLogin(account)
             }
-        }
-    }
-
-    fun onClick(view: View) {
-        if (view.id == R.id.sign_in_button) {
-            signIn()
         }
     }
 
@@ -70,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == this.RC_SIGN_IN) {
+        if (requestCode == this.RC_SIGN_IN) {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
@@ -84,15 +77,16 @@ class LoginActivity : AppCompatActivity() {
              *       if this is the first time, please give google the new user's address through maps api which will be in address activity and will play a key role in our application which is why we feed google with user's precious information probably without her/him even knowing it
              *      -Dz */
 
-            login(account)
+            viewModel.myLogin(account)
 
-            Toast.makeText(applicationContext, "Welcome, " + account?.displayName, Toast.LENGTH_LONG)
-                    .also(Toast::show)
+            Toast.makeText(applicationContext,
+                "Welcome, " + account?.displayName,
+                Toast.LENGTH_LONG)
+                .also(Toast::show)
 
             /* this intent sends the user data to main activity.
              * try CTRL+SHIFT+F'ing for INTENT_LOGIN_MAIN */
-            val mainIntent = Intent(this, MainActivity::class.java)
-            startActivity(mainIntent)
+
         } catch (e: ApiException) {
             Log.w(LOG_TAG, "code: " + e.statusCode)
             /* TODO: login failed, HANDLE IT IF YOU CAN!
@@ -107,21 +101,19 @@ class LoginActivity : AppCompatActivity() {
     private fun checkExistence(email: String?): Boolean {
         try {
 
-        } catch (e: ApiException){
+        } catch (e: ApiException) {
 
         }
 
         return false
     }
 
-    // BEWARE: This function executes coroutines.
-    //         See https://developer.android.com/kotlin/coroutines for more information.
-    //        -Dz
-    private fun login(account: GoogleSignInAccount?) {
-        GlobalScope.launch {
-            loginRepository.userAuth(account)
-        }
+    private fun initViewModel(): LoginActivityViewModel {
+        val loginRepository = LoginRepository()
+        val loginNavigator = LoginNavigator(this)
+        return LoginActivityViewModel(loginRepository, loginNavigator)
     }
+
 }
 
 // DISCLAIMER (FOR NO REASON AT ALL):
