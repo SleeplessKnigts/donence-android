@@ -12,9 +12,9 @@
         android:title="@string/title_dashboard" />
 
     <item
-        android:id="@+id/navigation_dropoff"
+        android:id="@+id/navigation_request"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_dropoff" />
+        android:title="@string/title_request" />
     <item
         android:id="@+id/navigation_map"
         android:icon="@android:drawable/ic_dialog_map"
