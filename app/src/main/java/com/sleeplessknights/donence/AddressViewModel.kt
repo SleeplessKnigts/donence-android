@@ -26,9 +26,10 @@ class AddressViewModel(application: Application) :
         map.setOnMapLongClickListener { latLng ->
             map.clear()
             map.addMarker(
-                MarkerOptions().position(latLng)
-                    .title(getAddress(latLng.latitude, latLng.longitude))
+                MarkerOptions()
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                    .position(latLng)
+                    .title(getAddress(latLng.latitude, latLng.longitude))
             )
             map.moveCamera(CameraUpdateFactory.newLatLng(latLng))
         }
@@ -52,6 +53,7 @@ class AddressViewModel(application: Application) :
             map.clear()
             map.addMarker(
                 MarkerOptions()
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
                     .position(poi.latLng)
                     .title(poi.name)
             ).showInfoWindow()
