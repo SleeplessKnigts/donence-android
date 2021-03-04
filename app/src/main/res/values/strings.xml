@@ -14,7 +14,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="google_places_api_key">AIzaSyClYo091Eh81VY-l-hX4x4RkgQI1aQorFU</string>
+    <string name="google_places_api_key">API KEY HERE</string>
     <string name="unknown_place">Unkown Place</string>
 
 </resources>
