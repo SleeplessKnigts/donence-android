@@ -16,7 +16,6 @@ class AddressViewModel(application: Application) :
     AndroidViewModel(application) {
 
     private val context = application.applicationContext
-
     private val _locationData = AddressLiveData(application)
 
     val locationData: AddressLiveData

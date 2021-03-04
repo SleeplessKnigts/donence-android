@@ -1,9 +1,7 @@
 package com.sleeplessknights.donence
 
-
 import android.annotation.SuppressLint
 import android.app.Application
-import android.location.Address
 import android.location.Location
 import androidx.lifecycle.LiveData
 import com.sleeplessknights.donence.utils.Constants
@@ -12,7 +10,6 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.sleeplessknights.donence.data.model.AddressItem
-
 
 class AddressLiveData(application: Application) : LiveData<AddressItem>() {
 

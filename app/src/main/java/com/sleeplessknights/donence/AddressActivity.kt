@@ -33,8 +33,7 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback{
 
         setAddressButton = findViewById<Button>(R.id.setAddressButton)
         setAddressButton.setOnClickListener {
-            //moveCenteredMarker()
-
+            // TODO: add
         }
         val autocompleteFragment = supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
                     as AutocompleteSupportFragment
