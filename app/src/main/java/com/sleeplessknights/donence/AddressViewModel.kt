@@ -35,6 +35,8 @@ class AddressViewModel(application: Application) :
         }
     }
 
+    //TODO: add submit button functionality
+
     fun setAutoCompleteDone(map: GoogleMap, place:Place) {
         map.clear()
             map.addMarker(
