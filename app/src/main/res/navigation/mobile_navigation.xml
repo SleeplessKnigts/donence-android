@@ -23,10 +23,10 @@
         android:label="@string/title_dropoff"
         tools:layout="@layout/fragment_dropoff" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_map"
-        android:name="com.sleeplessknights.donence.ui.map.MapFragment"
-        android:label="@string/title_map"
-        tools:layout="@layout/fragment_map" />
+        android:name="com.sleeplessknights.donence.AddressActivity"
+        android:label="Address Activity"
+        tools:layout="@layout/activity_address" />
 
 </navigation>
