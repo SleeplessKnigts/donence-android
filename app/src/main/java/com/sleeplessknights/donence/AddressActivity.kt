@@ -1,6 +1,7 @@
 package com.sleeplessknights.donence
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentActivity
@@ -16,25 +17,33 @@ import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.sleeplessknights.donence.databinding.ActivityAddressBinding
 import com.sleeplessknights.donence.utils.Constants
 
 class AddressActivity : FragmentActivity(), OnMapReadyCallback{
     private lateinit var mMap: GoogleMap
 
     private lateinit var setAddressButton:Button
+    var binding: ActivityAddressBinding? = null
 
     private val viewModel: AddressViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_address)
+
+        binding = ActivityAddressBinding.inflate(layoutInflater)
+        binding?.lifecycleOwner = this
+        binding?.vm   = viewModel
+        setContentView(binding!!.root)
 
         Places.initialize(getApplicationContext(), getString(R.string.google_places_api_key));
 
-        setAddressButton = findViewById<Button>(R.id.setAddressButton)
-        setAddressButton.setOnClickListener {
-            // TODO: add
-        }
+//        setAddressButton = findViewById<Button>(R.id.setAddressButton)
+//
+//        setAddressButton.setOnClickListener {
+//            Log.d("TAG","WADDUP")
+//        }
+        observe()
         val autocompleteFragment = supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
                     as AutocompleteSupportFragment
 
@@ -51,6 +60,14 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback{
 
             override fun onError(p0: Status) {
                 TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun observe() {
+        viewModel.submitIsClicked().observe(this, Observer { isClicked ->
+            if (isClicked) {
+                Log.d("TAG","BASILDİ")
             }
         })
     }

@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Donence">
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyClYo091Eh81VY-l-hX4x4RkgQI1aQorFU"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="API KEY HERE"/>
+
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".AddressActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_address" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

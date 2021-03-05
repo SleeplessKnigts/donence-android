@@ -4,6 +4,8 @@ import android.app.Application
 import android.location.Geocoder
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
@@ -17,6 +19,17 @@ class AddressViewModel(application: Application) :
 
     private val context = application.applicationContext
     private val _locationData = AddressLiveData(application)
+
+    private val isClicked = MutableLiveData<Boolean>()
+
+    fun onClicked() {
+        Log.d("TAG","button clicked. send latlong to backend.")
+        isClicked.value = true
+    }
+
+    fun submitIsClicked(): LiveData<Boolean> {
+        return isClicked
+    }
 
     val locationData: AddressLiveData
         get() = _locationData

@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable
+            name="vm"
+            type="com.sleeplessknights.donence.AddressViewModel" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingTop="?attr/actionBarSize">
+    android:paddingTop="?attr/actionBarSize"
+    tools:context=".AddressActivity">
 
-    <fragment
+<fragment
         android:id="@+id/autocomplete_fragment"
         android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
         android:layout_width="match_parent"
@@ -31,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:onClick="setAddressForThisMarker"
+        android:onClick="@{() -> vm.onClicked()}"
         android:text="Complete Address Selection"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,4 +51,4 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+</layout>
