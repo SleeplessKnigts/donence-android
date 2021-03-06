@@ -8,7 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Donence">
+
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDCR8utQkMnH4gO70XrY0HJOyCsdz2kqlc"/>
 
         <activity
@@ -29,4 +31,5 @@
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

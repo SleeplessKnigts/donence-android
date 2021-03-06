@@ -12,10 +12,14 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.model.Place
+import com.sleeplessknights.donence.data.model.AddressItem
 import com.sleeplessknights.donence.rest.AddressRepository
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Response
 import java.io.IOException
 import java.util.*
+import javax.security.auth.callback.Callback
 
 class AddressViewModel(application: Application) :
     AndroidViewModel(application) {
@@ -36,6 +40,10 @@ class AddressViewModel(application: Application) :
 
     val locationData: AddressLiveData
         get() = _locationData
+
+    val addressRepository: AddressRepository
+        get() = AddressRepository()
+
 
 
     fun setMapLongClick(map: GoogleMap) {
@@ -80,10 +88,35 @@ class AddressViewModel(application: Application) :
             ).showInfoWindow()
         }
     }
-    fun submitAddress(){
-        Log.d("TAG", locationData.value!!.latitude.toString()+" "+locationData.value!!.longitude.toString()).toString()
+//    fun submitAddress(){
+//        viewModelScope.launch {
+//
+//            val call = addressRepository.setAddress(locationData)
+//        }
+//        Log.d("TAG", locationData.value!!.latitude.toString()+" "+locationData.value!!.longitude.toString()).toString()
+//    }
 
+    fun submitAddress() {
+        viewModelScope.launch {
+            val call = addressRepository.setAddress(locationData)
+            call.enqueue(object : Callback, retrofit2.Callback<AddressItem> {
+                override fun onResponse(call: Call<AddressItem>, response: Response<AddressItem>) {
+                    if (response.isSuccessful) {
+                        Log.d("TAG", "LOLDU AQ")
+                    }
+                }
+
+                override fun onFailure(call: Call<AddressItem>, t: Throwable) {
+                    Log.d("TAG", "BOK AQ"+ t.localizedMessage)
+                }
+
+            })
+        }
+        Log.d("TAG", locationData.value!!.latitude.toString()+" "+locationData.value!!.longitude.toString()).toString()
     }
+
+
+
 
     private fun getAddress(latitude: Double, longitude: Double): String? {
         return try {

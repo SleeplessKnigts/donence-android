@@ -81,5 +81,4 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback{
         viewModel.setMapLongClick(mMap)
         viewModel.setPoiClick(mMap)
     }
-
 }
