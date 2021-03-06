@@ -1,18 +1,18 @@
 package com.sleeplessknights.donence.rest
-
 import com.sleeplessknights.donence.data.addressData
 import com.sleeplessknights.donence.data.model.AddressItem
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.http.POST
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.Headers
+import retrofit2.http.POST
+
 
 interface AddressApiService {
 
     @POST("address")
-    @Headers("Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODAwIiwiaWF0IjoxNjE0NDI2MTM3LCJleHAiOjE2MTcwMTgxMzd9.WrX4Vtc7SabZP0zqDYba9SJpQradMW0N4WbZN7THwFirHKGZUuFQlOseNpDhD2IaEZVnWsPG41jKhNAb3neIrA")
+    @Headers("Authorization: Bearer ")
     fun submitAddress(@Body request: addressData): Call<AddressItem>
 
     companion object {

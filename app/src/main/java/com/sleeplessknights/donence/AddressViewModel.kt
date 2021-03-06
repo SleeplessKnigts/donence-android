@@ -94,16 +94,17 @@ class AddressViewModel(application: Application) :
 
     fun submitAddress() {
         viewModelScope.launch {
+
             val call = addressRepository.setAddress(locationData)
             call.enqueue(object : Callback, retrofit2.Callback<AddressItem> {
                 override fun onResponse(call: Call<AddressItem>, response: Response<AddressItem>) {
                     if (response.isSuccessful) {
-                        Log.d("TAG", "OLDU AQ")
+                        Log.d("TAG", "OLDU ")
                     }
                 }
 
                 override fun onFailure(call: Call<AddressItem>, t: Throwable) {
-                    Log.d("TAG", "OLMADI AQ"+ t.localizedMessage)
+                    Log.d("TAG", "OLMADI "+ t.localizedMessage)
                 }
 
             })
