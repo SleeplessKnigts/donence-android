@@ -1,6 +1,7 @@
 package com.sleeplessknights.donence.rest.login
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.sleeplessknights.donence.model.LoginResponse
 import com.sleeplessknights.donence.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -16,7 +17,7 @@ class LoginRepository() {
     // BEWARE: This function uses coroutines *to connect to the backend userAuthentication endpoint*
     //         See https://developer.android.com/kotlin/coroutines for more information.
     //        -Dz
-    suspend fun userAuth(account: GoogleSignInAccount?): Call<User> {
+    suspend fun userAuth(account: GoogleSignInAccount?): Call<LoginResponse> {
         return withContext(Dispatchers.IO) {
             /* backend struggle starts here */
             return@withContext userApiService.authenticateUser(

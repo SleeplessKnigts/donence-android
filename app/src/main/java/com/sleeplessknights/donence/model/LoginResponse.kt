@@ -1,9 +1,14 @@
 package com.sleeplessknights.donence.model
 
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class LoginResponse(
-    val accessToken: String,
-    val email:       String,
-    val username:    String,
-    val role:        String,
-    val name:        String
-)
+    @SerializedName("accessToken") val accessToken: String,
+    @SerializedName("email") val email: String,
+    @SerializedName("username") val username: String,
+    @SerializedName("role") val role: String,
+    @SerializedName("name") val name: String
+) : Parcelable
