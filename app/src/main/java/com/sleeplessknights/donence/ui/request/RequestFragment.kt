@@ -1,4 +1,4 @@
-package com.sleeplessknights.donence.ui.dropoff
+package com.sleeplessknights.donence.ui.request
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sleeplessknights.donence.R
 
-class DropoffFragment : Fragment() {
+class RequestFragment : Fragment() {
 
-    private lateinit var dropoffViewModel: DropoffViewModel
+    private lateinit var requestViewModel: RequestViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dropoffViewModel =
-                ViewModelProvider(this).get(DropoffViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dropoff, container, false)
+        requestViewModel =
+                ViewModelProvider(this).get(RequestViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_request, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
-        dropoffViewModel.text.observe(viewLifecycleOwner, Observer {
+        requestViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_dropoff"
-        android:name="com.sleeplessknights.donence.ui.dropoff.DropoffFragment"
-        android:label="@string/title_dropoff"
-        tools:layout="@layout/fragment_dropoff" />
+        android:id="@+id/navigation_request"
+        android:name="com.sleeplessknights.donence.ui.request.RequestFragment"
+        android:label="@string/title_request"
+        tools:layout="@layout/fragment_request" />
 
     <fragment
         android:id="@+id/navigation_map"
