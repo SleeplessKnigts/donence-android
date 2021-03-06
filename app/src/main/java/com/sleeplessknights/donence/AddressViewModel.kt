@@ -44,8 +44,6 @@ class AddressViewModel(application: Application) :
     val addressRepository: AddressRepository
         get() = AddressRepository()
 
-
-
     fun setMapLongClick(map: GoogleMap) {
         map.setOnMapLongClickListener { latLng ->
             locationData.setLocationData(latLng.latitude, latLng.longitude)
@@ -59,8 +57,6 @@ class AddressViewModel(application: Application) :
             map.moveCamera(CameraUpdateFactory.newLatLng(latLng))
         }
     }
-
-    //TODO: add submit button functionality
 
     fun setAutoCompleteDone(map: GoogleMap, place:Place) {
         map.clear()
@@ -102,21 +98,18 @@ class AddressViewModel(application: Application) :
             call.enqueue(object : Callback, retrofit2.Callback<AddressItem> {
                 override fun onResponse(call: Call<AddressItem>, response: Response<AddressItem>) {
                     if (response.isSuccessful) {
-                        Log.d("TAG", "LOLDU AQ")
+                        Log.d("TAG", "OLDU AQ")
                     }
                 }
 
                 override fun onFailure(call: Call<AddressItem>, t: Throwable) {
-                    Log.d("TAG", "BOK AQ"+ t.localizedMessage)
+                    Log.d("TAG", "OLMADI AQ"+ t.localizedMessage)
                 }
 
             })
         }
         Log.d("TAG", locationData.value!!.latitude.toString()+" "+locationData.value!!.longitude.toString()).toString()
     }
-
-
-
 
     private fun getAddress(latitude: Double, longitude: Double): String? {
         return try {

@@ -1,9 +1,7 @@
 package com.sleeplessknights.donence.rest
 
-import android.util.Log
 import com.sleeplessknights.donence.AddressLiveData
-import com.sleeplessknights.donence.data.deneme
-import com.sleeplessknights.donence.data.denemeUser
+import com.sleeplessknights.donence.data.addressData
 import com.sleeplessknights.donence.data.model.AddressItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -20,7 +18,7 @@ class AddressRepository() {
         return withContext(Dispatchers.IO) {
             /* backend struggle starts here */
             return@withContext adressApiService.submitAddress(
-            deneme("testmail@gmail.com",address.value!!.latitude, address.value!!.longitude))
+            addressData(address.value!!.latitude, address.value!!.longitude))
 
              // !! don't forget TODO: get rid of !!s
         }
