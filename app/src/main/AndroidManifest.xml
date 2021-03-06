@@ -11,6 +11,17 @@
         android:theme="@style/Theme.Donence"
         android:usesCleartextTraffic="true">
         <activity android:name=".MainActivity" />
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.Donence">
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDCR8utQkMnH4gO70XrY0HJOyCsdz2kqlc"/>
+
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".AddressActivity"
+            android:label="@string/title_activity_address" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">
@@ -21,5 +32,7 @@
             </intent-filter>
         </activity>
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
