@@ -10,8 +10,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.sleeplessknights.donence.base.getAny
-import com.sleeplessknights.donence.model.LoginResponse
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_request))
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -36,9 +33,3 @@ class MainActivity : AppCompatActivity() {
         toast.show()
     }
 }
-
-// DISCLAIMER (FOR NO REASON AT ALL):
-// Function, class and package names, types, locations etc. are all subject to change.
-// The goal is to provide basic functionality and understand how things work around here just for now.
-// Happy developing, boys!
-// -Dz

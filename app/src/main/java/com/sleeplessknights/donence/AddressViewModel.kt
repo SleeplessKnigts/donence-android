@@ -30,7 +30,7 @@ class AddressViewModel(application: Application) :
     private val isClicked = MutableLiveData<Boolean>()
 
     fun onClicked() {
-        Log.d("TAG","button clicked. send latlong to backend.")
+        Log.d("TAG","button clicked. sending latlong to backend.")
         isClicked.value = true
     }
 
@@ -60,6 +60,7 @@ class AddressViewModel(application: Application) :
 
     fun setAutoCompleteDone(map: GoogleMap, place:Place) {
         map.clear()
+        locationData.setLocationData(place.latLng!!.latitude, place.latLng!!.longitude)
             map.addMarker(
                 place.let {
                     MarkerOptions()
@@ -84,32 +85,22 @@ class AddressViewModel(application: Application) :
             ).showInfoWindow()
         }
     }
-//    fun submitAddress(){
-//        viewModelScope.launch {
-//
-//            val call = addressRepository.setAddress(locationData)
-//        }
-//        Log.d("TAG", locationData.value!!.latitude.toString()+" "+locationData.value!!.longitude.toString()).toString()
-//    }
 
-    fun submitAddress() {
+    fun submitAddress(token:String) {
         viewModelScope.launch {
 
-            val call = addressRepository.setAddress(locationData)
+            val call = addressRepository.setAddress(token, locationData)
             call.enqueue(object : Callback, retrofit2.Callback<AddressItem> {
                 override fun onResponse(call: Call<AddressItem>, response: Response<AddressItem>) {
                     if (response.isSuccessful) {
-                        Log.d("TAG", "OLDU ")
+                        Log.d("TAG", "Address set for the user. ")
                     }
                 }
-
                 override fun onFailure(call: Call<AddressItem>, t: Throwable) {
-                    Log.d("TAG", "OLMADI "+ t.localizedMessage)
+                    Log.d("TAG", "Someting went wrong: "+ t.localizedMessage)
                 }
-
             })
         }
-        Log.d("TAG", locationData.value!!.latitude.toString()+" "+locationData.value!!.longitude.toString()).toString()
     }
 
     private fun getAddress(latitude: Double, longitude: Double): String? {

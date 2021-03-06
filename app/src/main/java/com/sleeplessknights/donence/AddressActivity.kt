@@ -1,5 +1,6 @@
 package com.sleeplessknights.donence
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -19,7 +20,9 @@ import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.sleeplessknights.donence.base.getAny
 import com.sleeplessknights.donence.databinding.ActivityAddressBinding
+import com.sleeplessknights.donence.model.LoginResponse
 import com.sleeplessknights.donence.utils.Constants
 
 class AddressActivity : FragmentActivity(), OnMapReadyCallback{
@@ -64,7 +67,8 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback{
     private fun observe() {
         viewModel.submitIsClicked().observe(this, Observer { isClicked ->
             if (isClicked) {
-                viewModel.submitAddress()
+                val responseBody = getSharedPreferences(packageName, Context.MODE_PRIVATE).getAny<LoginResponse>("user_responseBody")
+                viewModel.submitAddress(responseBody!!.accessToken)
             }
         })
     }

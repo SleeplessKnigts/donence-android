@@ -13,11 +13,12 @@ class AddressRepository() {
         AddressApiService.create()
     }
 
-    suspend fun setAddress(address: AddressLiveData): Call<AddressItem> {
+    suspend fun setAddress(headerToken:String, address: AddressLiveData): Call<AddressItem> {
 
         return withContext(Dispatchers.IO) {
             /* backend struggle starts here */
-            return@withContext adressApiService.submitAddress(
+            val son = ("Bearer ".plus(headerToken))
+            return@withContext adressApiService.submitAddress(son,
             addressData(address.value!!.latitude, address.value!!.longitude))
 
              // !! don't forget TODO: get rid of !!s
