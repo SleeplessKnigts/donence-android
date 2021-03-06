@@ -6,11 +6,14 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.model.Place
+import com.sleeplessknights.donence.rest.AddressRepository
+import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.*
 
@@ -34,8 +37,10 @@ class AddressViewModel(application: Application) :
     val locationData: AddressLiveData
         get() = _locationData
 
+
     fun setMapLongClick(map: GoogleMap) {
         map.setOnMapLongClickListener { latLng ->
+            locationData.setLocationData(latLng.latitude, latLng.longitude)
             map.clear()
             map.addMarker(
                 MarkerOptions()
@@ -64,6 +69,8 @@ class AddressViewModel(application: Application) :
 
     fun setPoiClick(map: GoogleMap) {
         map.setOnPoiClickListener { poi ->
+            locationData.setLocationData(poi.latLng.latitude, poi.latLng.longitude)
+
             map.clear()
             map.addMarker(
                 MarkerOptions()
@@ -72,6 +79,10 @@ class AddressViewModel(application: Application) :
                     .title(poi.name)
             ).showInfoWindow()
         }
+    }
+    fun submitAddress(){
+        Log.d("TAG", locationData.value!!.latitude.toString()+" "+locationData.value!!.longitude.toString()).toString()
+
     }
 
     private fun getAddress(latitude: Double, longitude: Double): String? {
@@ -88,4 +99,5 @@ class AddressViewModel(application: Application) :
             context.getString(R.string.unknown_place)
         }
     }
+
 }

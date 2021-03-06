@@ -3,6 +3,7 @@ package com.sleeplessknights.donence
 import android.annotation.SuppressLint
 import android.app.Application
 import android.location.Location
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.sleeplessknights.donence.utils.Constants
 import com.google.android.gms.location.LocationCallback
@@ -22,45 +23,47 @@ class AddressLiveData(application: Application) : LiveData<AddressItem>() {
         priority = LocationRequest.PRIORITY_HIGH_ACCURACY
     }
 
-    override fun onInactive() {
-        super.onInactive()
-        fusedLocationClient.removeLocationUpdates(locationCallback)
-    }
+//    override fun onInactive() {
+//        super.onInactive()
+//        fusedLocationClient.removeLocationUpdates(locationCallback)
+//    }
 
-    @SuppressLint("MissingPermission")
-    override fun onActive() {
-        super.onActive()
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location: Location? ->
-                location?.also {
-                    setLocationData(it)
-                }
-            }
-        startLocationUpdates()
-    }
+//    @SuppressLint("MissingPermission")
+//    override fun onActive() {
+//        super.onActive()
+//        fusedLocationClient.lastLocation
+//            .addOnSuccessListener { location: Location? ->
+//                location?.also {
+//                    setLocationData(it.latitude, it.longitude)
+//                }
+//            }
+//        startLocationUpdates()
+//    }
+//
+//    @SuppressLint("MissingPermission")
+//    private fun startLocationUpdates() {
+//        fusedLocationClient.requestLocationUpdates(
+//            locationRequest,
+//            locationCallback,
+//            null
+//        )
+//    }
+//
+//    private val locationCallback = object : LocationCallback() {
+//        override fun onLocationResult(locationResult: LocationResult?) {
+//            locationResult ?: return
+//            for (location in locationResult.locations) {
+//                setLocationData(location.latitude, location.longitude)
+//            }
+//        }
+//    }
+    
+    fun setLocationData(lat:Double, long:Double) {
 
-    @SuppressLint("MissingPermission")
-    private fun startLocationUpdates() {
-        fusedLocationClient.requestLocationUpdates(
-            locationRequest,
-            locationCallback,
-            null
-        )
-    }
-
-    private val locationCallback = object : LocationCallback() {
-        override fun onLocationResult(locationResult: LocationResult?) {
-            locationResult ?: return
-            for (location in locationResult.locations) {
-                setLocationData(location)
-            }
-        }
-    }
-
-    private fun setLocationData(location: Location) {
         value = AddressItem(
-            longitude = location.longitude,
-            latitude = location.latitude
+            longitude = lat,
+            latitude = long
         )
+
     }
 }

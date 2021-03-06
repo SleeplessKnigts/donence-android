@@ -3,9 +3,11 @@ package com.sleeplessknights.donence
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
+import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -38,11 +40,6 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback{
 
         Places.initialize(getApplicationContext(), getString(R.string.google_places_api_key));
 
-//        setAddressButton = findViewById<Button>(R.id.setAddressButton)
-//
-//        setAddressButton.setOnClickListener {
-//            Log.d("TAG","WADDUP")
-//        }
         observe()
         val autocompleteFragment = supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
                     as AutocompleteSupportFragment
@@ -67,7 +64,7 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback{
     private fun observe() {
         viewModel.submitIsClicked().observe(this, Observer { isClicked ->
             if (isClicked) {
-                Log.d("TAG","BASILDİ")
+                viewModel.submitAddress()
             }
         })
     }
@@ -84,4 +81,5 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback{
         viewModel.setMapLongClick(mMap)
         viewModel.setPoiClick(mMap)
     }
+
 }
