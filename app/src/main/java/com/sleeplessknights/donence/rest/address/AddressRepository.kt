@@ -1,7 +1,7 @@
 package com.sleeplessknights.donence.rest.address
 
 import com.sleeplessknights.donence.ui.address.AddressLiveData
-import com.sleeplessknights.donence.data.addressData
+import com.sleeplessknights.donence.data.AddressData
 import com.sleeplessknights.donence.data.model.AddressItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,7 +19,7 @@ class AddressRepository() {
             /* backend struggle starts here */
             val son = ("Bearer ".plus(headerToken))
             return@withContext adressApiService.submitAddress(son,
-            addressData(address.value!!.latitude, address.value!!.longitude))
+            AddressData(address.value!!.latitude, address.value!!.longitude))
 
              // !! don't forget TODO: get rid of !!s
         }

@@ -1,5 +1,5 @@
 package com.sleeplessknights.donence.rest.address
-import com.sleeplessknights.donence.data.addressData
+import com.sleeplessknights.donence.data.AddressData
 import com.sleeplessknights.donence.data.model.AddressItem
 
 import retrofit2.Call
@@ -12,7 +12,7 @@ import retrofit2.http.POST
 interface AddressApiService {
 
     @POST("address")
-    fun submitAddress(@Header("Authorization") authorization:String, @Body request: addressData): Call<AddressItem>
+    fun submitAddress(@Header("Authorization") authorization:String, @Body request: AddressData): Call<AddressItem>
 
     companion object {
         private val URL = "http://10.0.2.2:8080/api/user/"
