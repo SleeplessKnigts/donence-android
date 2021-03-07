@@ -2,7 +2,7 @@ package com.sleeplessknights.donence.ui.address
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.sleeplessknights.donence.utils.Constants
+import com.sleeplessknights.donence.util.MapConstants
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.sleeplessknights.donence.data.model.AddressItem
@@ -13,8 +13,8 @@ class AddressLiveData(application: Application) : LiveData<AddressItem>() {
         LocationServices.getFusedLocationProviderClient(application)
 
     private val locationRequest: LocationRequest = LocationRequest.create().apply {
-        interval = Constants.LOCATION_UPDATE_INTERVAL
-        fastestInterval = Constants.LOCATION_UPDATE_FASTEST_INTERVAL
+        interval = MapConstants.LOCATION_UPDATE_INTERVAL
+        fastestInterval = MapConstants.LOCATION_UPDATE_FASTEST_INTERVAL
         priority = LocationRequest.PRIORITY_HIGH_ACCURACY
     }
 

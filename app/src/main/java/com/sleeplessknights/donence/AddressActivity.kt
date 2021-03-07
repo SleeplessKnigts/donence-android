@@ -21,7 +21,7 @@ import com.sleeplessknights.donence.base.getAny
 import com.sleeplessknights.donence.databinding.ActivityAddressBinding
 import com.sleeplessknights.donence.model.LoginResponse
 import com.sleeplessknights.donence.ui.address.AddressViewModel
-import com.sleeplessknights.donence.utils.Constants
+import com.sleeplessknights.donence.util.MapConstants
 
 class AddressActivity : FragmentActivity(), OnMapReadyCallback{
     private lateinit var mMap: GoogleMap
@@ -76,7 +76,7 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback{
 
         viewModel.locationData.observe(this, Observer {
             val latLng = LatLng(it.latitude, it.longitude)
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, Constants.MAP_ZOOM))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, MapConstants.MAP_ZOOM))
             mMap.addMarker(MarkerOptions().position(latLng))
         })
 
