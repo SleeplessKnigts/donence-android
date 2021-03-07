@@ -1,14 +1,9 @@
-package com.sleeplessknights.donence
+package com.sleeplessknights.donence.ui.address
 
-import android.annotation.SuppressLint
 import android.app.Application
-import android.location.Location
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.sleeplessknights.donence.utils.Constants
-import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.sleeplessknights.donence.data.model.AddressItem
 

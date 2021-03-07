@@ -1,4 +1,4 @@
-package com.sleeplessknights.donence
+package com.sleeplessknights.donence.ui.address
 
 import android.app.Application
 import android.location.Geocoder
@@ -12,8 +12,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.model.Place
+import com.sleeplessknights.donence.R
 import com.sleeplessknights.donence.data.model.AddressItem
-import com.sleeplessknights.donence.rest.AddressRepository
+import com.sleeplessknights.donence.rest.address.AddressRepository
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response

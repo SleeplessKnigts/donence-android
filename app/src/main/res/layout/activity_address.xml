@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.sleeplessknights.donence.AddressViewModel" />
+            type="com.sleeplessknights.donence.ui.address.AddressViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

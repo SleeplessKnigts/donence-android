@@ -2,13 +2,10 @@ package com.sleeplessknights.donence
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
-import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,6 +20,7 @@ import com.google.android.libraries.places.widget.listener.PlaceSelectionListene
 import com.sleeplessknights.donence.base.getAny
 import com.sleeplessknights.donence.databinding.ActivityAddressBinding
 import com.sleeplessknights.donence.model.LoginResponse
+import com.sleeplessknights.donence.ui.address.AddressViewModel
 import com.sleeplessknights.donence.utils.Constants
 
 class AddressActivity : FragmentActivity(), OnMapReadyCallback{

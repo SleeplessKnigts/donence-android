@@ -1,4 +1,4 @@
-package com.sleeplessknights.donence.rest
+package com.sleeplessknights.donence.rest.address
 import com.sleeplessknights.donence.data.addressData
 import com.sleeplessknights.donence.data.model.AddressItem
 
