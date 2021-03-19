@@ -6,17 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".ui.request.RequestFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_request" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_request"
+            android:layout_width="295dp"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_plastic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_plastic" />
+
+            <RadioButton
+                android:id="@+id/radio_paper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_paper" />
+
+            <RadioButton
+                android:id="@+id/radio_glass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_glass" />
+
+            <RadioButton
+                android:id="@+id/radio_battery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_battery" />
+
+            <RadioButton
+                android:id="@+id/radio_electronic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_electronic" />
+
+            <RadioButton
+                android:id="@+id/radio_oil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_oil" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/done" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@
     <string name="app_name">Donence</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_request">Request</string>
+    <string name="title_request">Make a request:</string>
     <string name="title_map">Map</string>
     <string name="placeholder">Placeholder</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -15,4 +15,11 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">Login failed</string>
     <string name="backend_url">http://10.0.2.2:8080</string>
+    <string name="radio_plastic">Plastic</string>
+    <string name="radio_paper">Paper</string>
+    <string name="radio_glass">Glass</string>
+    <string name="radio_battery">Battery</string>
+    <string name="radio_electronic">Electronic</string>
+    <string name="radio_oil">Oil</string>
+    <string name="done">Done</string>
 </resources>
