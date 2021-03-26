@@ -11,7 +11,9 @@ android {
 
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
+
     defaultConfig {
         applicationId "com.sleeplessknights.donence"
         minSdkVersion 21
