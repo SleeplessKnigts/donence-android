@@ -11,11 +11,11 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.sleeplessknights.donence.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+    <activity
+        android:id="@+id/navigation_profile"
+        android:name="com.sleeplessknights.donence.ui.profile.ProfileActivity"
+        android:label="@string/title_profile"
+        tools:layout="@layout/activity_profile" />
 
     <fragment
         android:id="@+id/navigation_request"

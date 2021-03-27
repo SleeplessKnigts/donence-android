@@ -2,10 +2,9 @@
 <layout>
 
     <data>
-
         <variable
             name="vm"
-            type="com.sleeplessknights.donence.ui.login.LoginActivityViewModel" />
+            type="com.sleeplessknights.donence.ui.login.LoginActivityViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

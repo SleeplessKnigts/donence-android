@@ -1,6 +1,8 @@
 package com.sleeplessknights.donence.ui.address
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import android.location.Geocoder
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -10,7 +12,6 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.model.Place
 import com.sleeplessknights.donence.R
@@ -98,6 +99,7 @@ class AddressViewModel(application: Application) :
                 override fun onResponse(call: Call<AddressItem>, response: Response<AddressItem>) {
                     if (response.isSuccessful) {
                         Log.d("TAG", "Address set for the user. ")
+
                     }
                 }
 
