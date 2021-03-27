@@ -1,31 +1,51 @@
 package com.sleeplessknights.donence.ui.request
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.sleeplessknights.donence.R
+import com.sleeplessknights.donence.base.viewModel
+import com.sleeplessknights.donence.databinding.FragmentRequestBinding
+import com.sleeplessknights.donence.rest.request.RequestRepository
+import java.time.LocalDateTime
 
 class RequestFragment : Fragment() {
 
-    private lateinit var requestViewModel: RequestViewModel
+    private lateinit var binding: FragmentRequestBinding
+    private val viewModel by viewModel { initViewModel() }
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        requestViewModel =
-                ViewModelProvider(this).get(RequestViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_request, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        requestViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = FragmentRequestBinding.inflate(layoutInflater)
+        observe()
+    }
+
+    private fun observe() {
+        viewModel.getIsClicked().observe(this, Observer { abc ->
+            if (abc) {
+                val reqList =
+                    listOf<Boolean>(binding.radioPlastic.isChecked, binding.radioPlastic.isChecked,
+                        binding.radioGlass.isChecked, binding.radioBattery.isChecked,
+                        binding.radioElectronic.isChecked, binding.radioOil.isChecked
+                    )
+                makeRequest(reqList)
+            }
         })
-        return root
+    }
+
+    private fun makeRequest(reqList: List<Boolean>) {
+        val type: String = ""
+        val letters = listOf('P', 'K', 'G', 'B', 'E', 'O')
+        for ((index, b) in reqList.withIndex()) {
+            if (b) {
+                type.plus(letters[index])
+            }
+        }
+
+
+    }
+
+    private fun initViewModel(): RequestViewModel {
+        val requestRepository = RequestRepository()
+        return RequestViewModel(requestRepository)
     }
 }
