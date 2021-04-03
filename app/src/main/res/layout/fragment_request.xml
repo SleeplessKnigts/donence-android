@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.sleeplessknights.donence.ui.request.RequestViewModel" />
+            type="com.sleeplessknights.donence.ui.request.RequestFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/done"
-                android:onClick="@{() -> vm.onClick()}" />
+                android:onClick="@{() -> vm.onClicked()}" />
         </LinearLayout>
 
 
