@@ -38,7 +38,7 @@ class RequestFragment : Fragment() {
         viewModel.getIsClicked().observe(viewLifecycleOwner, Observer { abc ->
             if (abc) {
                 val reqList =
-                    listOf<Boolean>(binding.radioPlastic.isChecked, binding.radioPlastic.isChecked,
+                    listOf<Boolean>(binding.radioPlastic.isChecked, binding.radioPaper.isChecked,
                         binding.radioGlass.isChecked, binding.radioBattery.isChecked,
                         binding.radioElectronic.isChecked, binding.radioOil.isChecked
                     )
@@ -51,11 +51,12 @@ class RequestFragment : Fragment() {
     private fun makeRequest(reqList: List<Boolean>) {
         val loginResponseBody = this.activity?.getSharedPreferences(this.requireActivity().packageName,
             Context.MODE_PRIVATE)?.getAny<LoginResponse>("user_responseBody")
-        val type: String = ""
-        val letters = listOf('P', 'K', 'G', 'B', 'E', 'O')
+        var type: String = ""
+        val letters = listOf("P", "K", "G", "B", "E", "O")
         for ((index, b) in reqList.withIndex()) {
             if (b) {
-                type.plus(letters[index])
+                var letter = letters[index]
+                type = "$type$letter"
             }
         }
         viewModel.makeRequest(loginResponseBody!!.accessToken, type)
