@@ -1,8 +1,12 @@
 package com.sleeplessknights.donence.ui.request
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.sleeplessknights.donence.R
 import com.sleeplessknights.donence.base.viewModel
 import com.sleeplessknights.donence.databinding.FragmentRequestBinding
 import com.sleeplessknights.donence.rest.request.RequestRepository
@@ -12,6 +16,14 @@ class RequestFragment : Fragment() {
 
     private lateinit var binding: FragmentRequestBinding
     private val viewModel by viewModel { initViewModel() }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(R.layout.fragment_request, container, false)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
