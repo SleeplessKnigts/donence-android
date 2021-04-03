@@ -12,9 +12,10 @@ class RequestRepository {
         RequestApiService.create()
     }
 
-    suspend fun makeRequest(requestType: String): Call<RequestResponse> {
+    suspend fun makeRequest(token: String, requestType: String): Call<RequestResponse> {
         return withContext(Dispatchers.IO) {
-            return@withContext requestApiService.request(
+            val req = ("Bearer ".plus(token))
+            return@withContext requestApiService.request(req,
                 Request(requestType)
             )
         }

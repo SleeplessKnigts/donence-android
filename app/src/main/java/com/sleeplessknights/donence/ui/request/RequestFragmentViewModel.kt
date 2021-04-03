@@ -25,9 +25,9 @@ class RequestFragmentViewModel(
         return isClicked
     }
 
-    fun makeRequest(requestType: String) {
+    fun makeRequest(token: String, requestType: String) {
         viewModelScope.launch {
-            val call = requestRepository.makeRequest(requestType)
+            val call = requestRepository.makeRequest(token, "requestType")
             call.enqueue(object : Callback, retrofit2.Callback<RequestResponse> {
                 override fun onResponse(
                     call: Call<RequestResponse>,

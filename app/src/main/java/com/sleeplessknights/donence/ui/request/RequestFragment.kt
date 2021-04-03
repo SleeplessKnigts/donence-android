@@ -1,21 +1,22 @@
 package com.sleeplessknights.donence.ui.request
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.sleeplessknights.donence.R
+import com.sleeplessknights.donence.base.getAny
 import com.sleeplessknights.donence.base.viewModel
 import com.sleeplessknights.donence.databinding.FragmentRequestBinding
+import com.sleeplessknights.donence.model.LoginResponse
 import com.sleeplessknights.donence.rest.request.RequestRepository
 
 class RequestFragment : Fragment() {
 
     private lateinit var binding: FragmentRequestBinding
-    private val viewModel by viewModel(::requireActivity,::initViewModel)
+    private val viewModel by viewModel(::requireActivity, ::initViewModel)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +49,8 @@ class RequestFragment : Fragment() {
 
 
     private fun makeRequest(reqList: List<Boolean>) {
+        val loginResponseBody = this.activity?.getSharedPreferences(this.requireActivity().packageName,
+            Context.MODE_PRIVATE)?.getAny<LoginResponse>("user_responseBody")
         val type: String = ""
         val letters = listOf('P', 'K', 'G', 'B', 'E', 'O')
         for ((index, b) in reqList.withIndex()) {
@@ -55,7 +58,7 @@ class RequestFragment : Fragment() {
                 type.plus(letters[index])
             }
         }
-        viewModel.makeRequest(type)
+        viewModel.makeRequest(loginResponseBody!!.accessToken, type)
     }
 
     private fun initViewModel(): RequestFragmentViewModel {
