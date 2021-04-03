@@ -55,9 +55,7 @@ class RequestFragment : Fragment() {
                 type.plus(letters[index])
             }
         }
-        Toast.makeText(this.context, "TOAST", Toast.LENGTH_LONG)
-
-
+        viewModel.makeRequest(type)
     }
 
     private fun initViewModel(): RequestFragmentViewModel {
