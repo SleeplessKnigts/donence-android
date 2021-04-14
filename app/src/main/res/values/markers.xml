@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="marker_oil">http://maps.google.com/mapfiles/ms/icons/blue-dot.png</string>
+    <string name="marker_paper">http://maps.google.com/mapfiles/ms/icons/red-dot.png</string>
+    <string name="marker_electronic">http://maps.google.com/mapfiles/ms/icons/electronics.png</string>
+    <string name="marker_plastic">http://maps.google.com/mapfiles/ms/icons/recycle.png</string>
+    <string name="marker_battery">http://maps.google.com/mapfiles/ms/icons/green-dot.png</string>
+    <string name="marker_glass">http://maps.google.com/mapfiles/ms/icons/ltblue-dot.png</string>
+</resources>
