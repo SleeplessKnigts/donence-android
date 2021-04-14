@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Donence</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_profile">Profile</string>
     <string name="title_request">Request</string>
     <string name="title_map">Map</string>
     <string name="placeholder">Placeholder</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_address">AddressActivity</string>
+    <string name="title_fragment_profile">ProfileFragment</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -16,7 +17,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="backend_url">http://10.0.2.2:8080</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="google_places_api_key">API KEY HERE</string>
+    <string name="google_places_api_key">AIzaSyDCR8utQkMnH4gO70XrY0HJOyCsdz2kqlc</string>
     <string name="unknown_place">Unkown Place</string>
     <string name="radio_plastic">Plastic</string>
     <string name="radio_paper">Paper</string>
@@ -25,4 +26,8 @@
     <string name="radio_electronic">Electronic</string>
     <string name="radio_oil">Oil</string>
     <string name="done">Done</string>
+    <string name="user_name_prefix">User Name:</string>
+    <string name="email_prefix">E-mail:</string>
+    <string name="auth_prefix">Sign In Type:</string>
+    <string name="request_status_prefix">Request Status:</string>
 </resources>
