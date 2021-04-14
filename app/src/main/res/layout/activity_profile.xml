@@ -10,10 +10,10 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="748dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:paddingTop="?attr/actionBarSize"
-        tools:context=".ui.profile.ProfileActivity">
+        tools:context=".ui.profile.ProfileFragment">
 
         <ImageView
             android:id="@+id/imageView4"
@@ -22,8 +22,9 @@
             android:background="@drawable/background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
@@ -104,13 +105,12 @@
             android:id="@+id/imageView3"
             android:layout_width="122dp"
             android:layout_height="107dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/profile_round"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <Button
             android:id="@+id/Update"
@@ -146,7 +146,7 @@
 
 
         <fragment
-             android:id="@+id/staticMapView"
+             android:id="@+id/mapImage"
              android:name="com.google.android.gms.maps.SupportMapFragment"
              android:layout_width="334dp"
              android:layout_height="266dp"
@@ -164,22 +164,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="    Currently Selected Address"
+            android:text="Currently Selected Address"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.134"
+            app:layout_constraintHorizontal_bias="0.201"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView2"
-            app:layout_constraintVertical_bias="0.305" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="43dp"
-            android:layout_height="43dp"
-            app:srcCompat="@drawable/ic_mobile"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="147dp" />
+            app:layout_constraintVertical_bias="0.202" />
 
         <TextView
             android:id="@+id/textView"

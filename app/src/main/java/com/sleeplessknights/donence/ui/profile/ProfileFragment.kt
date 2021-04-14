@@ -1,11 +1,19 @@
 package com.sleeplessknights.donence.ui.profile
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -14,27 +22,27 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.sleeplessknights.donence.R
 import com.sleeplessknights.donence.base.getAny
-import com.sleeplessknights.donence.databinding.ActivityProfileBinding
 import com.sleeplessknights.donence.model.LoginResponse
+import com.sleeplessknights.donence.ui.map.MapViewModel
 
-class ProfileActivity : FragmentActivity(), OnMapReadyCallback {
-    var binding: ActivityProfileBinding? = null
+class ProfileFragment : Fragment(), OnMapReadyCallback {
 
-    private val viewModel: ProfileViewModel by viewModels()
+    private lateinit var viewModel: ProfileViewModel
     private lateinit var latlng: LatLng
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        binding = ActivityProfileBinding.inflate(layoutInflater)
-        binding?.lifecycleOwner = this
-        binding?.vm = viewModel
-        setContentView(binding!!.root)
-                val responseBody =
-            getSharedPreferences(packageName, Context.MODE_PRIVATE).getAny<LoginResponse>(
-                "user_responseBody")
-        print(responseBody)
-        val userNameText = findViewById<TextView>(R.id.user_name_textView)
-        val emailText = findViewById<TextView>(R.id.email_textView)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewModel =
+            ViewModelProvider(this).get(ProfileViewModel::class.java)
+        val root = inflater.inflate(R.layout.activity_profile, container, false)
+
+        val responseBody = this.activity?.getSharedPreferences(this.requireActivity().packageName, Context.MODE_PRIVATE)?.getAny<LoginResponse>("user_responseBody")
+
+        val userNameText = root.findViewById<TextView>(R.id.user_name_textView)
+        val emailText = root.findViewById<TextView>(R.id.email_textView)
         //val authType = findViewById<TextView>(R.id.auth_type_textView)
 
         if (responseBody != null) {
@@ -51,16 +59,16 @@ class ProfileActivity : FragmentActivity(), OnMapReadyCallback {
         }
         val latLngObserver = Observer<LatLng> { receivedLatLng ->
             latlng = receivedLatLng
-            val mapFragment = supportFragmentManager.findFragmentById(R.id.staticMapView) as SupportMapFragment
+            val mapFragment = getChildFragmentManager().findFragmentById(R.id.mapImage) as SupportMapFragment
             mapFragment.getMapAsync(this)
-
         }
 
-        viewModel.email.observe(this, emailObserver)
-        viewModel.fname.observe(this, fnameObserver)
-        viewModel.imageUrl.observe(this, imageUrlObserver)
-        viewModel.latLng.observe(this, latLngObserver)
+        viewModel.email.observe(viewLifecycleOwner, emailObserver)
+        viewModel.fname.observe(viewLifecycleOwner, fnameObserver)
+        viewModel.imageUrl.observe(viewLifecycleOwner, imageUrlObserver)
+        viewModel.latLng.observe(viewLifecycleOwner, latLngObserver)
 
+        return root
     }
 
     override fun onMapReady(map: GoogleMap?) {
@@ -69,6 +77,4 @@ class ProfileActivity : FragmentActivity(), OnMapReadyCallback {
             map.addMarker(MarkerOptions().position(latlng))
         }
     }
-
-
 }
