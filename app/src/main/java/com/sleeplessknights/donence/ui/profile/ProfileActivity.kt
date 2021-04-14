@@ -11,6 +11,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.sleeplessknights.donence.R
 import com.sleeplessknights.donence.base.getAny
 import com.sleeplessknights.donence.databinding.ActivityProfileBinding
@@ -64,7 +65,8 @@ class ProfileActivity : FragmentActivity(), OnMapReadyCallback {
 
     override fun onMapReady(map: GoogleMap?) {
         if (map != null) {
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 35f))
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latlng, 18f))
+            map.addMarker(MarkerOptions().position(latlng))
         }
     }
 

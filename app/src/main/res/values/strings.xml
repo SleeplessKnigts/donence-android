@@ -17,7 +17,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="backend_url">http://10.0.2.2:8080</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="google_places_api_key">API KEY HERE</string>
+    <string name="google_places_api_key">AIzaSyDCR8utQkMnH4gO70XrY0HJOyCsdz2kqlc</string>
     <string name="unknown_place">Unkown Place</string>
     <string name="user_name_prefix">User Name:</string>
     <string name="email_prefix">E-mail:</string>

@@ -24,9 +24,7 @@ class ProfileViewModel : ViewModel() {
     val imageUrl: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
-    val lat: MutableLiveData<Double> by lazy {
-        MutableLiveData<Double>()
-    }
+
     val latLng: MutableLiveData<LatLng> by lazy {
         MutableLiveData<LatLng>()
     }

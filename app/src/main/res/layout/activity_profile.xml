@@ -11,33 +11,48 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="748dp"
         android:paddingTop="?attr/actionBarSize"
         tools:context=".ui.profile.ProfileActivity">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="414dp"
+            android:layout_height="753dp"
+            android:background="@drawable/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/user_name_prefix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="@string/user_name_prefix"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintHorizontal_bias="0.332"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.29" />
+            app:layout_constraintVertical_bias="0.345" />
 
         <TextView
             android:id="@+id/email_prefix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="@string/email_prefix"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.352"
+            app:layout_constraintHorizontal_bias="0.35"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_name_prefix"
-            app:layout_constraintVertical_bias="0.17" />
+            app:layout_constraintVertical_bias="0.135" />
 
         <TextView
             android:id="@+id/user_name_textView"
@@ -45,10 +60,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintHorizontal_bias="0.069"
             app:layout_constraintStart_toEndOf="@+id/user_name_prefix"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.292" />
+            app:layout_constraintVertical_bias="0.349" />
 
         <TextView
             android:id="@+id/email_textView"
@@ -56,22 +71,22 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.079"
+            app:layout_constraintHorizontal_bias="0.077"
             app:layout_constraintStart_toEndOf="@+id/email_prefix"
             app:layout_constraintTop_toBottomOf="@+id/user_name_textView"
-            app:layout_constraintVertical_bias="0.17" />
+            app:layout_constraintVertical_bias="0.145" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/ic_name"
             app:layout_constraintBottom_toTopOf="@+id/email_prefix"
             app:layout_constraintEnd_toStartOf="@+id/user_name_prefix"
-            app:layout_constraintHorizontal_bias="0.765"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.811"
-            android:background="@drawable/ic_name" />
+            app:layout_constraintVertical_bias="0.814" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -80,48 +95,117 @@
             android:background="@drawable/ic_email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/email_prefix"
-            app:layout_constraintHorizontal_bias="0.772"
+            app:layout_constraintHorizontal_bias="0.564"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.082" />
+            app:layout_constraintVertical_bias="0.091" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="122dp"
             android:layout_height="107dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/profile_round"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.449"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:background="@drawable/profile_round" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/Update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+            android:text=" Update "
+            app:icon="@drawable/ic_dashboard_black_24dp"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/currently_selected_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.865"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_prefix"
+            app:layout_constraintVertical_bias="0.333" />
+
+        <Button
+            android:id="@+id/changeaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:backgroundTint="#2196F3"
+            android:text="  Change Address  "
+            app:icon="@drawable/ic_home_black_24dp"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.935"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currently_selected_address"
+            app:layout_constraintVertical_bias="0.784"
+            app:strokeColor="#FFFFFF" />
+
+
+        <fragment
+             android:id="@+id/staticMapView"
+             android:name="com.google.android.gms.maps.SupportMapFragment"
+             android:layout_width="334dp"
+             android:layout_height="266dp"
+             app:cameraZoom="25"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/imageView2"
+             app:liteMode="true"
+             app:mapType="normal"
+             tools:layout="@layout/activity_profile" />
 
         <TextView
             android:id="@+id/currently_selected_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Currently Selected Address"
+            android:fontFamily="sans-serif-black"
+            android:text="    Currently Selected Address"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.211"
+            app:layout_constraintHorizontal_bias="0.134"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView2"
-            app:layout_constraintVertical_bias="0.232" />
+            app:layout_constraintVertical_bias="0.305" />
 
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            app:srcCompat="@drawable/ic_mobile"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="147dp" />
 
-                    <fragment
-            android:id="@+id/staticMapView"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="334dp"
-            android:layout_height="266dp"
-            app:cameraZoom="25"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request Status"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            app:liteMode="true"
-            app:mapType="normal"
-            tools:layout="@layout/activity_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PENDING"
+            android:textColor="#CDDC39"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/user_name_prefix"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
