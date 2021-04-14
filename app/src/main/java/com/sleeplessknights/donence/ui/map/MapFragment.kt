@@ -24,7 +24,7 @@ class MapFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_map, container, false)
         /**val textView: TextView = root.findViewById(R.id.text_home)
         mapViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        textView.text = it
         })*/
         return root
     }

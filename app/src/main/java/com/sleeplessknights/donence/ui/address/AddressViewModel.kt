@@ -10,17 +10,20 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.model.Place
 import com.sleeplessknights.donence.R
 import com.sleeplessknights.donence.data.model.AddressItem
 import com.sleeplessknights.donence.rest.address.AddressRepository
+import com.sleeplessknights.donence.util.MapConstants
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 import java.io.IOException
 import java.util.*
 import javax.security.auth.callback.Callback
+
 
 class AddressViewModel(application: Application) :
     AndroidViewModel(application) {
@@ -31,7 +34,7 @@ class AddressViewModel(application: Application) :
     private val isClicked = MutableLiveData<Boolean>()
 
     fun onClicked() {
-        Log.d("TAG","button clicked. sending latlong to backend.")
+        Log.d("TAG", "button clicked. sending latlong to backend.")
         isClicked.value = true
     }
 
@@ -55,11 +58,11 @@ class AddressViewModel(application: Application) :
                     .position(latLng)
                     .title(getAddress(latLng.latitude, latLng.longitude))
             )
-            map.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+           map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, MapConstants.MAP_ZOOM))
         }
     }
 
-    fun setAutoCompleteDone(map: GoogleMap, place:Place) {
+    fun setAutoCompleteDone(map: GoogleMap, place: Place) {
         map.clear()
         locationData.setLocationData(place.latLng!!.latitude, place.latLng!!.longitude)
             map.addMarker(
@@ -87,7 +90,7 @@ class AddressViewModel(application: Application) :
         }
     }
 
-    fun submitAddress(token:String) {
+    fun submitAddress(token: String) {
         viewModelScope.launch {
 
             val call = addressRepository.setAddress(token, locationData)
@@ -97,8 +100,9 @@ class AddressViewModel(application: Application) :
                         Log.d("TAG", "Address set for the user. ")
                     }
                 }
+
                 override fun onFailure(call: Call<AddressItem>, t: Throwable) {
-                    Log.d("TAG", "Someting went wrong: "+ t.localizedMessage)
+                    Log.d("TAG", "Someting went wrong: " + t.localizedMessage)
                 }
             })
         }
