@@ -12,20 +12,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Donence"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".MainActivity" />
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="API KEY HERE"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAtXc4pW2AyN_5cqPn-5cJIOHEG6sIqb6s" />
+
         <activity
             android:name=".AddressActivity"
             android:label="@string/title_activity_address" />
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.recyclepoints.RecyclePointsActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

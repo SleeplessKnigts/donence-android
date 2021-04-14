@@ -83,6 +83,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/done"
                 android:onClick="@{() -> vm.onClicked()}" />
+            <Button
+                android:id="@+id/button_recycle_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recycle_points"
+                android:onClick="@{() -> vm.onShowRecyclePoints()}" />
         </LinearLayout>
 
 
