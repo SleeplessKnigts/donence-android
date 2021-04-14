@@ -18,5 +18,11 @@
     <string name="login_failed">"Login failed"</string>
     <string name="google_places_api_key">API KEY HERE</string>
     <string name="unknown_place">Unkown Place</string>
-
+    <string name="radio_plastic">Plastic</string>
+    <string name="radio_paper">Paper</string>
+    <string name="radio_glass">Glass</string>
+    <string name="radio_battery">Battery</string>
+    <string name="radio_electronic">Electronic</string>
+    <string name="radio_oil">Oil</string>
+    <string name="done">Done</string>
 </resources>
