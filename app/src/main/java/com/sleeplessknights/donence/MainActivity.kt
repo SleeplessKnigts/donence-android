@@ -25,11 +25,4 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    /* TODO: remove these toys */
-    fun placeHolderOnClick(view: View) {
-        val toastText = "Clicked the button!"
-        val duration = Toast.LENGTH_LONG
-        val toast = Toast.makeText(applicationContext, toastText, duration)
-        toast.show()
-    }
 }
