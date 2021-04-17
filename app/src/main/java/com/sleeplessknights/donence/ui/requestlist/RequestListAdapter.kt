@@ -10,6 +10,8 @@ import com.sleeplessknights.donence.R
 class RequestListAdapter(private val data: ArrayList<String>) :
     RecyclerView.Adapter<RequestListAdapter.ViewHolder>() {
 
+    private var items = data
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
         init {
@@ -24,7 +26,13 @@ class RequestListAdapter(private val data: ArrayList<String>) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.textView.text = data[position]
+        viewHolder.textView.text = items[position]
+    }
+
+    fun updateData(newData: ArrayList<String>) {
+        items.clear()
+        items.addAll(newData)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = data.size
