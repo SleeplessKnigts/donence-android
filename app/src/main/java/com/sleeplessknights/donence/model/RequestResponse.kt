@@ -7,9 +7,9 @@ import java.time.LocalDateTime
 
 @Parcelize
 data class RequestResponse(
-    @SerializedName("requestId") val requestId: Number,
+    @SerializedName("requestId") val requestId: Int,
     @SerializedName("requestType") val requestType: String,
-    @SerializedName("creationDate") val creationDate: LocalDateTime,
-    @SerializedName("issuer") val issuer: LoginResponse,
+    @SerializedName("creationDate") val creationDate: String,
+    @SerializedName("issuer") val issuer: UserResponse,
     @SerializedName("active") val active: Boolean
 ) : Parcelable

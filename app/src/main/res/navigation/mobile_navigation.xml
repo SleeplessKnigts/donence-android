@@ -23,10 +23,10 @@
         android:label="@string/title_request"
         tools:layout="@layout/fragment_request" />
 
-    <activity
+    <fragment
         android:id="@+id/navigation_map"
-        android:name="com.sleeplessknights.donence.AddressActivity"
-        android:label="Address Activity"
-        tools:layout="@layout/activity_address" />
+        android:name="com.sleeplessknights.donence.ui.requestlist.RequestListFragment"
+        android:label="Request List"
+        tools:layout="@layout/fragment_requestlist" />
 
 </navigation>
