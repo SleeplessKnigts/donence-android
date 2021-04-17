@@ -27,9 +27,6 @@ class RequestListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        items.add("Item 1")
-        items.add("Item 2")
-        items.add("Item 3")
 
         binding = FragmentRequestlistBinding.inflate(inflater)
 
