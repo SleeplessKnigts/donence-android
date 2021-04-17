@@ -26,6 +26,7 @@
     <string name="radio_electronic">Electronic</string>
     <string name="radio_oil">Oil</string>
     <string name="done">Done</string>
+    <string name="recycle_points">See Recycle Points</string>
     <string name="user_name_prefix">User Name:</string>
     <string name="email_prefix">E-mail:</string>
     <string name="auth_prefix">Sign In Type:</string>

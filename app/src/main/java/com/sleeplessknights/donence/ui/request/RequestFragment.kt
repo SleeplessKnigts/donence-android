@@ -1,6 +1,7 @@
 package com.sleeplessknights.donence.ui.request
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.sleeplessknights.donence.base.viewModel
 import com.sleeplessknights.donence.databinding.FragmentRequestBinding
 import com.sleeplessknights.donence.model.LoginResponse
 import com.sleeplessknights.donence.rest.request.RequestRepository
+import com.sleeplessknights.donence.ui.recyclepoints.RecyclePointsActivity
 
 class RequestFragment : Fragment() {
 
@@ -45,12 +47,19 @@ class RequestFragment : Fragment() {
                 makeRequest(reqList)
             }
         })
+
+        viewModel.getLaunchRecyclePointsActivity().observe(viewLifecycleOwner, Observer { def ->
+            if (def) {
+                launchRecyclePoints()
+            }
+        })
     }
 
 
     private fun makeRequest(reqList: List<Boolean>) {
-        val loginResponseBody = this.activity?.getSharedPreferences(this.requireActivity().packageName,
-            Context.MODE_PRIVATE)?.getAny<LoginResponse>("user_responseBody")
+        val loginResponseBody =
+            this.activity?.getSharedPreferences(this.requireActivity().packageName,
+                Context.MODE_PRIVATE)?.getAny<LoginResponse>("user_responseBody")
         var type: String = ""
         val letters = listOf("P", "K", "G", "B", "E", "O")
         for ((index, b) in reqList.withIndex()) {
@@ -65,5 +74,10 @@ class RequestFragment : Fragment() {
     private fun initViewModel(): RequestFragmentViewModel {
         val requestRepository = RequestRepository()
         return RequestFragmentViewModel(requestRepository)
+    }
+
+    private fun launchRecyclePoints() {
+        val intent = Intent(activity, RecyclePointsActivity::class.java)
+        startActivity(intent)
     }
 }
