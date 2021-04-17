@@ -2,7 +2,7 @@
     <string name="app_name">Donence</string>
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
-    <string name="title_request">Request</string>
+    <string name="title_request">Make a Request</string>
     <string name="title_map">Map</string>
     <string name="placeholder">Placeholder</string>
     <string name="title_activity_login">LoginActivity</string>
