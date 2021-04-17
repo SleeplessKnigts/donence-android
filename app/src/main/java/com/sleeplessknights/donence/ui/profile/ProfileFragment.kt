@@ -1,17 +1,13 @@
 package com.sleeplessknights.donence.ui.profile
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -23,7 +19,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.sleeplessknights.donence.R
 import com.sleeplessknights.donence.base.getAny
 import com.sleeplessknights.donence.model.LoginResponse
-import com.sleeplessknights.donence.ui.map.MapViewModel
 
 class ProfileFragment : Fragment(), OnMapReadyCallback {
 
@@ -43,7 +38,6 @@ class ProfileFragment : Fragment(), OnMapReadyCallback {
 
         val userNameText = root.findViewById<TextView>(R.id.user_name_textView)
         val emailText = root.findViewById<TextView>(R.id.email_textView)
-        //val authType = findViewById<TextView>(R.id.auth_type_textView)
 
         if (responseBody != null) {
             viewModel.getDetails(responseBody.accessToken)
