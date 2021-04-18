@@ -1,6 +1,7 @@
 package com.sleeplessknights.donence
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.viewModels
@@ -40,6 +41,7 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback {
         Places.initialize(applicationContext, getString(R.string.google_places_api_key))
 
         observe()
+        observeIsDone()
         val autocompleteFragment =
             supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
                     as AutocompleteSupportFragment
@@ -57,6 +59,16 @@ class AddressActivity : FragmentActivity(), OnMapReadyCallback {
 
             override fun onError(p0: Status) {
                 TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun observeIsDone() {
+        viewModel.isDone().observe(this, Observer { isDone ->
+            if (isDone) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         })
     }

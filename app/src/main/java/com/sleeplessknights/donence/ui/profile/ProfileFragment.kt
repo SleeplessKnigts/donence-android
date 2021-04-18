@@ -1,6 +1,7 @@
 package com.sleeplessknights.donence.ui.profile
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.sleeplessknights.donence.AddressActivity
 import com.sleeplessknights.donence.R
 import com.sleeplessknights.donence.base.getAny
 import com.sleeplessknights.donence.model.LoginResponse
@@ -61,6 +63,13 @@ class ProfileFragment : Fragment(), OnMapReadyCallback {
         viewModel.fname.observe(viewLifecycleOwner, fnameObserver)
         viewModel.imageUrl.observe(viewLifecycleOwner, imageUrlObserver)
         viewModel.latLng.observe(viewLifecycleOwner, latLngObserver)
+
+        val changeAdd = root.findViewById<TextView>(R.id.changeaddress)
+
+        changeAdd.setOnClickListener{
+            val intent = Intent(this.context, AddressActivity::class.java)
+            startActivity(intent)
+        }
 
         return root
     }

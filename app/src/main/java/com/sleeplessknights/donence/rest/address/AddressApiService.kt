@@ -12,7 +12,7 @@ import retrofit2.http.POST
 interface AddressApiService {
 
     @POST("address")
-    fun submitAddress(@Header("Authorization") authorization:String, @Body request: AddressData): Call<AddressItem>
+    fun submitAddress(@Header("Authorization") authorization:String, @Body request: AddressData): Call<Void>
 
     companion object {
         private val URL = "https://donence.herokuapp.com/api/user/"
