@@ -37,37 +37,37 @@
             android:layout_width="295dp"
             android:layout_height="wrap_content">
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/radio_plastic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_plastic" />
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/radio_paper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_paper" />
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/radio_glass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_glass" />
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/radio_battery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_battery" />
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/radio_electronic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_electronic" />
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/radio_oil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

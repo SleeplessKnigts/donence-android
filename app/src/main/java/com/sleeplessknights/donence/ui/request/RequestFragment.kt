@@ -65,7 +65,7 @@ class RequestFragment : Fragment() {
         for ((index, b) in reqList.withIndex()) {
             if (b) {
                 var letter = letters[index]
-                type = "$type$letter"
+                type = letter
             }
         }
         viewModel.makeRequest(loginResponseBody!!.accessToken, type)

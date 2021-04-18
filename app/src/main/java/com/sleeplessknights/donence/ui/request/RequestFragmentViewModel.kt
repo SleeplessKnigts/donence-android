@@ -1,15 +1,12 @@
 package com.sleeplessknights.donence.ui.request
 
-import android.content.Intent
-import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sleeplessknights.donence.MainActivity
 import com.sleeplessknights.donence.model.RequestResponse
 import com.sleeplessknights.donence.rest.request.RequestRepository
-import com.sleeplessknights.donence.ui.recyclepoints.RecyclePointsActivity
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
@@ -41,7 +38,7 @@ class RequestFragmentViewModel(
 
     fun makeRequest(token: String, requestType: String) {
         viewModelScope.launch {
-            val call = requestRepository.makeRequest(token, "requestType")
+            val call = requestRepository.makeRequest(token, requestType)
             call.enqueue(object : Callback, retrofit2.Callback<RequestResponse> {
                 override fun onResponse(
                     call: Call<RequestResponse>,
@@ -60,11 +57,11 @@ class RequestFragmentViewModel(
     }
 
     private fun onRequestFailure() {
-        TODO("Not yet implemented")
+
     }
 
     private fun onRequestSuccess() {
-        TODO("Not yet implemented")
+
     }
 
 }
