@@ -14,7 +14,7 @@ interface RequestApiService {
     fun request(@Header("Authorization") authorization: String, @Body request: Request): Call<RequestResponse>
 
     companion object {
-        private val URL = "http://10.0.2.2:8080/api/"
+        private val URL = "https://donence.herokuapp.com/api/"
 
         fun create(): RequestApiService {
             val retrofit = Retrofit.Builder()

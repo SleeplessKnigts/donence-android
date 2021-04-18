@@ -14,7 +14,7 @@ interface NewsApiService {
     fun getNews(@Header("Authorization") authorization:String) : Call<List<NewsResponse>>
 
     companion object {
-        private val URL = "http://10.0.2.2:8080/api/user/"
+        private val URL = "https://donence.herokuapp.com/api/user/"
 
         fun create(): NewsApiService {
             val retrofit

@@ -52,7 +52,7 @@ class HomeViewModel : ViewModel() {
                 }
 
                 override fun onFailure(call: Call<List<NewsResponse>>, t: Throwable) {
-                    TODO("Not yet implemented")
+
                 }
             })
         }

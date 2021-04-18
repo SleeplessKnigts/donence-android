@@ -24,7 +24,7 @@ interface UserApiService {
         *        Since the backend server can not handle SSL handshakes yet, we have a workaround.
         *        CTRL+SHIFT+F usesClearText to see the workaround in AndroidManifest.xml
         *       -Dz */
-        private val URL = "http://10.0.2.2:8080/api/auth/" /*TODO: fun fact: 10.0.2.2 refers to host loopback ip address in avd.
+        private val URL = "https://donence.herokuapp.com/api/auth/" /*TODO: fun fact: 10.0.2.2 refers to host loopback ip address in avd.
                                                   *       replace with real url _when the time comes_.
                                                   *      -Dz */
         fun create(): UserApiService {

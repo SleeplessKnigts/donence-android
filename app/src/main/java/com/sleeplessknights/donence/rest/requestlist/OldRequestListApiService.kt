@@ -13,7 +13,7 @@ interface OldRequestListApiService {
     fun request(@Header("Authorization") authorization: String): Call<List<RequestResponse>>
 
     companion object {
-        private val URL = "http://10.0.2.2:8080/api/user/requests/"
+        private val URL = "https://donence.herokuapp.com/api/user/requests/"
 
         fun create(): OldRequestListApiService {
             val retrofit = Retrofit.Builder()
