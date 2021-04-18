@@ -2,9 +2,11 @@ package com.sleeplessknights.donence.ui.address
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.location.Geocoder
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,9 +16,11 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.model.Place
+import com.sleeplessknights.donence.AddressActivity
 import com.sleeplessknights.donence.R
 import com.sleeplessknights.donence.data.model.AddressItem
 import com.sleeplessknights.donence.rest.address.AddressRepository
+import com.sleeplessknights.donence.ui.home.HomeFragment
 import com.sleeplessknights.donence.util.MapConstants
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -42,7 +46,9 @@ class AddressViewModel(application: Application) :
     fun submitIsClicked(): LiveData<Boolean> {
         return isClicked
     }
-
+    fun isDone(): LiveData<Boolean> {
+        return isClicked
+    }
     val locationData: AddressLiveData
         get() = _locationData
 
@@ -95,15 +101,15 @@ class AddressViewModel(application: Application) :
         viewModelScope.launch {
 
             val call = addressRepository.setAddress(token, locationData)
-            call.enqueue(object : Callback, retrofit2.Callback<AddressItem> {
-                override fun onResponse(call: Call<AddressItem>, response: Response<AddressItem>) {
+            call.enqueue(object : Callback, retrofit2.Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
                         Log.d("TAG", "Address set for the user. ")
-
+                        isDone()
                     }
                 }
 
-                override fun onFailure(call: Call<AddressItem>, t: Throwable) {
+                override fun onFailure(call: Call<Void>, t: Throwable) {
                     Log.d("TAG", "Someting went wrong: " + t.localizedMessage)
                 }
             })

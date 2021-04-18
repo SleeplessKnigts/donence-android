@@ -13,7 +13,7 @@ class AddressRepository() {
         AddressApiService.create()
     }
 
-    suspend fun setAddress(headerToken: String, address: AddressLiveData): Call<AddressItem> {
+    suspend fun setAddress(headerToken: String, address: AddressLiveData): Call<Void> {
 
         return withContext(Dispatchers.IO) {
             /* backend struggle starts here */
